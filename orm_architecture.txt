@@ -1,0 +1,35 @@
+remove duplicate in query response
+
+  post = Post.all.first
+  posts = sql.performQuery("SELECT DISTINCT * FROM post")
+
+  SQL
+
+  SELECT DISTINCT * FROM post;
+
+2.filter records using inequalities, pattern matching, ranges, and boolean logic
+
+    posts = sql.performQuery("SELECT * FROM post WHERE id > 2")
+
+    SQL
+
+    SELECT * FROM post WHERE id > 2;
+
+3.sort records in particular order
+
+  user = User.all
+  users = sql.performQuery("SELECT * FROM user ORDER BY full_name")
+
+  SQL
+
+  SELECT * FROM user ORDER BY full_name;
+
+4.group records into sections, perform calculations using aggregate functions
+
+  user = User.all.first
+  comments = user.posts.comments
+  comments = sql.performQuery("SELECT * FROM comment")
+
+  SQL
+
+  SELECT user_id, COUNT(post_id) FROM comment GROUP BY user_id;
